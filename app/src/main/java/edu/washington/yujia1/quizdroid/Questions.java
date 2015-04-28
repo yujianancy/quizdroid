@@ -114,6 +114,31 @@ public class Questions extends ActionBarActivity {
                         break;
                 }
                 break;
+            case 3:
+                switch (pos){
+                    case 0:
+                        txtQues.setText("Q4: 10 / 2 = ?");
+                        r1.setText("2");
+                        r2.setText("5");
+                        r3.setText("3");
+                        r4.setText("4");
+                        break;
+                    case 1:
+                        txtQues.setText("Q4:Which of these terms is NOT associated with classical mechanics?");
+                        r1.setText("Force");
+                        r2.setText("Momentum");
+                        r3.setText("Friction");
+                        r4.setText("Conductivity");
+                        break;
+                    case 2:
+                        txtQues.setText("Q4:Thor has two war goats to pull his chariot. They are named:");
+                        r1.setText("Balder and Hermod");
+                        r2.setText("Thunder and Lightning");
+                        r3.setText("Ask and Embla");
+                        r4.setText("Toothgrinder and Toothgnasher");
+                        break;
+                }
+                break;
         }
         rG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -145,11 +170,17 @@ public class Questions extends ActionBarActivity {
                                    con++;
                                }
                                break;
+                           case 3:
+                               if (r2.isChecked()){
+                                   con++;
+                               }
+                               break;
                        }
                        break;
                    case 1:
                        switch (questionNO){
                            case 0:
+                           case 3:
                                if (r4.isChecked()){
                                    con++;
                                }
@@ -158,6 +189,7 @@ public class Questions extends ActionBarActivity {
                                if (r3.isChecked()){
                                    con++;
                                }
+                               break;
                            case 2:
                                if (r2.isChecked()){
                                    con++;
@@ -177,6 +209,12 @@ public class Questions extends ActionBarActivity {
                                if (r3.isChecked()){
                                    con++;
                                }
+                               break;
+                           case 3:
+                               if (r4.isChecked()){
+                                   con++;
+                               }
+                               break;
                        }
                        break;
                }

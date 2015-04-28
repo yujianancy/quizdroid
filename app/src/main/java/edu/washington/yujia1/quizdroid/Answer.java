@@ -76,9 +76,21 @@ public class Answer extends ActionBarActivity {
                         break;
                 }
                 break;
+            case 3:
+                switch (pos){
+                    case 0:
+                        correctAnswer.setText("The correct answer is: 5");
+                        break;
+                    case 1:
+                        correctAnswer.setText("The correct answer is: Conductivity");
+                        break;
+                    case 2:
+                        correctAnswer.setText("The correct answer is: Toothgrinder and Toothgnasher");
+                        break;
+                }
 
         }
-        if (questionNO == 2){
+        if (questionNO == 3){
             next.setText("Finish");
         }
 
@@ -88,7 +100,7 @@ public class Answer extends ActionBarActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (questionNO == 2){
+                if (questionNO == 3){
                     Intent backToMain = new Intent(Answer.this, MainActivity.class);
                     startActivity(backToMain);
                 } else{
