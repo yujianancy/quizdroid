@@ -57,8 +57,8 @@ public class answer extends android.support.v4.app.Fragment {
                 corStr = question.getAnswer4();
                 break;
         }
-        txtCor.setText(corStr);
-        txtCount.setText("You have " + count + "correct!");
+        txtCor.setText("The correct answer is: " + corStr);
+        txtCount.setText("So far you got " + count + " out of 3 correct!");
         switch (answerNo){
             case 1:
                 answerStr = question.getAnswer1();
@@ -73,7 +73,7 @@ public class answer extends android.support.v4.app.Fragment {
                 answerStr = question.getAnswer4();
                 break;
         }
-        txtAnswer.setText(answerStr);
+        txtAnswer.setText("Your answer is: " + answerStr);
         return view;
     }
 
