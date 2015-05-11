@@ -38,10 +38,11 @@ public class QuestionActivity extends ActionBarActivity implements QuestionFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
+        QuizApp QuizApp = (QuizApp) getApplication();
         Button next = (Button)findViewById(R.id.next);
         Intent launchingIntent = getIntent();
-        pos = launchingIntent.getIntExtra("pos", 0);
-        QuestionClass question01 = new QuestionClass("Q1: 1 + 1 = ?","2","3","4","0",1);
+        pos = launchingIntent.getIntExtra("pos", -1);
+        /*QuestionClass question01 = new QuestionClass("Q1: 1 + 1 = ?","2","3","4","0",1);
         QuestionClass question02 = new QuestionClass("Q2: 4 - 1 = ?","2","5","3","0",3);
         QuestionClass question03 = new QuestionClass("Q3: 3 * 4 = ?","12","4","6","2",1);
         QuestionClass question21 = new QuestionClass("Q1: What  Captain America's shield made out of?","Platinum","Vibranium","Adamantuim","Other",2);
@@ -72,8 +73,8 @@ public class QuestionActivity extends ActionBarActivity implements QuestionFragm
                 questionCur.add(question22);
                 questionCur.add(question23);
                 break;
-        }
-        topic = new TopicClass(topicName, topicDes,questionCur);
+        }*/
+        topic = QuizApp.getInstance().getAllTopics().get(pos);
         question = topic.getQuestions().get(questionNumber);
 
         if (savedInstanceState == null){

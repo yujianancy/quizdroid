@@ -12,20 +12,33 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.washington.yujia1.quizdroid2.R;
 
 
 public class MainActivity extends ActionBarActivity {
-    public String[] topics = {"Math", "Physics", "Marvel Super Heroes"};
+
+
     private ListView theList;
+    public String[] names = new String[3];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        QuizApp QuizApp = (QuizApp) getApplication();
+        for (int i = 0; i<3; i++){
+
+            TopicClass topic = QuizApp.getInstance().getAllTopics().get(i);
+            String s = topic.getName();
+            names[i] = s;
+        }
 
         theList = (ListView) findViewById(R.id.ListOfTopics);
-        ArrayAdapter<String> items = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,topics);
+        ArrayAdapter<String> items = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
         theList.setAdapter(items);
         theList.setOnItemClickListener(new ListView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
