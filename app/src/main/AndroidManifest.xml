@@ -22,6 +22,10 @@
             android:name=".QuestionActivity"
             android:label="@string/title_activity_question" >
         </activity>
+        <activity
+            android:name=".UserSettingActivity"
+            android:label="UserSettingActivity" >
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

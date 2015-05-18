@@ -23,7 +23,6 @@ import java.util.List;
 
 public class QuizApp extends Application implements TopicRepository{
     private static QuizApp instance = null;
-
     public QuizApp(){
 
         if (instance == null){
