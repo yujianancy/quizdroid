@@ -18,9 +18,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("AlarmReceiver", "entered onReceive() from AlarmReceiver");
-
-
-        // This is where we start our DownloadService class! aka tell our IntentService to start the download!
        String URL = intent.getStringExtra("URL");
         int time = intent.getIntExtra("time",3);
         Intent downloadServiceIntent = new Intent(context, DownloadService.class);

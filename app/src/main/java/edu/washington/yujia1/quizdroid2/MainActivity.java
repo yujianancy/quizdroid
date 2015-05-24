@@ -46,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView theList;
     public String[] names = new String[3];
     String json = null;
+    String json1 = null;
 
     public static final int ALARM = 123;
 
@@ -168,8 +169,24 @@ public class MainActivity extends ActionBarActivity {
                 fos.write(json.getBytes());
                 fos.close();
             }
+
             catch (IOException e) {
                 Log.e("Exception", "File write failed: " + e.toString());
+            }
+
+            try{
+                FileInputStream fis1 = openFileInput("questions.json");
+                json1 = readJSONFile(fis1);
+            }
+            catch (IOException e){
+                Log.e("Exception", "File read failed");
+            }
+
+            if (json.equals(json1)){
+                Toast.makeText(MainActivity.this,"File writing finished!",Toast.LENGTH_SHORT).show();
+                Log.i("Writing","Writing finished!");
+            } else{
+                Log.d("Writing","Writing failed!");
             }
 
 
@@ -249,8 +266,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
         private String readJSONFile(InputStream fis)
-                throws IOException
-        {
+                throws IOException {
             int size = fis.available();
             byte[] buffer = new byte[size];
             fis.read(buffer);
@@ -259,15 +275,6 @@ public class MainActivity extends ActionBarActivity {
             return new String(buffer, "UTF-8");
 
         }
-
-    @Override
-    public void onDestroy(){
-       /* super.onDestroy();
-        if (am != null) {
-            am.cancel(alarmIntent);
-            alarmIntent.cancel();
-        }*/
-    }
 
 
 

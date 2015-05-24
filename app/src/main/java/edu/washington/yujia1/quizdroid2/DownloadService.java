@@ -23,8 +23,6 @@ import java.net.URL;
  */
 public class DownloadService extends IntentService {
     private DownloadManager dm;
-    private long enqueue;
-    public static final int ALARM = 123;
     String URL = null;
     int time = 3;
 
@@ -47,15 +45,9 @@ public class DownloadService extends IntentService {
     @Override
     protected void onHandleIntent(Intent workIntent) {
         Log.i("DownloadService", "entered onHandleIntent()");
-        // Hooray! This method is called where the AlarmManager shouldve started the download service and we just received it here!
-
-        // Specify the url you want to download here
 
         URL = (String) workIntent.getExtras().get("URL");
         time = (int) workIntent.getExtras().get("time");
-
-        if (URL == null){URL = "http://tednewardsandbox.site44.com/questions.json";}
-       // if (time == 0) {time = 3;}
         Log.i("DownloadService", "should be downloading here");
 
         // Start the download
@@ -68,34 +60,11 @@ public class DownloadService extends IntentService {
         request.setAllowedOverRoaming(false);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
-        enqueue = dm.enqueue(request);
+        dm.enqueue(request);
 
         Toast.makeText(this, "Getting data from Server, Please WAIT...", Toast.LENGTH_SHORT).show();
 
     }
 
-    public void startOrStopAlarm(Context context, boolean on) {
-        Log.i("DownloadService", "startOrStopAlarm on = " + on);
 
-        Intent alarmReceiverIntent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-
-        //if (on) {
-        int refreshInterval = time * 60000; // 5 min x 60,000 milliseconds = total ms in 5 min
-
-        Log.i("DownloadService", "setting alarm to " + refreshInterval);
-
-        // Start the alarm manager to repeat
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), refreshInterval, pendingIntent);
-        // }
-        /*else {
-            manager.cancel(pendingIntent);
-            pendingIntent.cancel();
-
-            Log.i("DownloadService", "Stopping alarm");
-        }*/
-
-    }
 }

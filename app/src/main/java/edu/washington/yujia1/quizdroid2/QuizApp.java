@@ -75,7 +75,7 @@ public class QuizApp extends Application implements TopicRepository{
                 Log.i("QuizApp", "questions.json DOES exist");
 
                 try {
-                    FileInputStream fis = openFileInput("questions.json");      // sweet we found it. openFileInput() takes a string path from your data directory. no need to put 'data/' in your path parameter
+                    FileInputStream fis = openFileInput("questions.json");
                     json = readJSONFile(fis);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
